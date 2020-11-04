@@ -6,13 +6,17 @@
     <title>World Crop Visualization</title>
     <link rel="stylesheet" href="styles.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+        integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
     <script src="https://d3js.org/d3-geo-projection.v2.js"></script>
-    <!-- <script src="js/info_box.js" async></script>
-    <script src="js/gap_plot.js" async></script>
-    <script src="js/map.js" async></script> -->
+    <script src="js/bar_chart.js" async></script>
+    <script src="js/line_chart.js" async></script>
+    <script src="js/crop_list.js" async></script>
+    <script src="js/guided_tours.js" async></script>
+    <script src="js/table.js" async></script>
+    <script src="js/map.js" async></script>
     <script src="js/script.js" async></script>
 </head>
 
@@ -22,16 +26,37 @@
         <p class="info">Name: Christian Felt; E-Mail: u0809693@utah.edu; UID: u0809693</p>
     </div>
     <div class="wrapper">
-        <div class="innerWrapper">
-            <div id="map-chart" class="view"></div>
-            <div id="country-detail"></div>
+        <div id="map_wrapper">
+            <div id="map">
+
+            </div>
+            <div id="clear_selection_button_wrapper">
+
+            </div>
+            <div id="year_slider_wrapper">
+                
+            </div>
+        </div>
+        <div id="bar_chart_wrapper">
+
         </div>
 
-        <div id="scatter-plot" class="view">
+        <div id="line_chart_wrapper">
+
 
         </div>
 
-    </div>
+        <div id="table_wrapper">
+
+        </div>
+
+        <div id="guided_tours_wrapper">
+
+        </div>
+        <div id="crop_list_wrapper">
+
+        </div>
+
 </body>
 
 </html>
