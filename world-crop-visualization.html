@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>World Crop Visualization</title>
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://d3js.org/d3.v5.js"></script>
@@ -22,41 +21,52 @@
 
 <body>
     <div class="header">
-        <h1>World Crop Visualization</h1>
-        <p class="info">Name: Christian Felt; E-Mail: u0809693@utah.edu; UID: u0809693</p>
+        <h1 id="title">World Crop Visualization</h1>
+        <p id="info">Name: Christian Felt; E-Mail: u0809693@utah.edu; UID: u0809693</p>
     </div>
-    <div class="wrapper">
-        <div id="map_wrapper">
-            <div id="map">
-
+    <div id="wrapper">
+        <div id="map_and_crop_and_tours_wrapper">
+            <div id="map_wrapper">
+                <div id="map_div"></div>
+                <div id="button_and_slider_wrapper">
+                    <div id="clear_selection_button_wrapper">
+                        <button type="button">Clear Selection</button>
+                    </div>
+                    <div id="year_slider_wrapper"></div>
+                </div>
             </div>
-            <div id="clear_selection_button_wrapper">
-
+            <div id="crop_list_and_guided_tours_wrapper">
+                <div id="crop_list_wrapper">
+                    <nav id="crop_list_nav">
+                        <ul id="crop_list_ul"></ul>
+                    </nav>
+                </div>
+                <div id="guided_tours_wrapper"></div>
             </div>
-            <div id="year_slider_wrapper">
-                
+        </div>
+        <div id="bar_line_chart_and_table_wrapper">
+            <div id="bar_chart_wrapper"></div>
+            <div id="line_chart_wrapper"></div>
+            <div id="table_wrapper">
+                <table>
+                    <tr>
+                        <th>Country Name</th>
+                        <th>Crop Weight</th>
+                        <th>Crop Value</th>
+                    </tr>
+                    <tr>
+                        <td>Australia</td>
+                        <td>500</td>
+                        <td>700</td>
+                    </tr>
+                    <tr>
+                        <td>Belgium</td>
+                        <td>10</td>
+                        <td>76</td>
+                    </tr>
+                </table>
             </div>
         </div>
-        <div id="bar_chart_wrapper">
-
-        </div>
-
-        <div id="line_chart_wrapper">
-
-
-        </div>
-
-        <div id="table_wrapper">
-
-        </div>
-
-        <div id="guided_tours_wrapper">
-
-        </div>
-        <div id="crop_list_wrapper">
-
-        </div>
-
 </body>
 
 </html>

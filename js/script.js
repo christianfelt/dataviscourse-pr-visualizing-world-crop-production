@@ -1,5 +1,3 @@
-loadData().then(data => { console.log(data) });
-
 async function loadFile(file) {
     let data = await d3.csv(file).then(d => {
         let mapped = d.map(g => {
@@ -31,3 +29,23 @@ async function loadData() {
         'oceania': oceania,
     };
 }
+
+async function main() {
+    data = loadData().then(data => {
+        const worldMap = new Map(data);
+        const cropList = new CropList(data);
+        const guidedTours = new GuidedTours(data);
+        const barChart = new BarChart(data);
+        const lineChart = new LineChart(data);
+        d3.json('data/world.json').then(mapData => {
+            worldMap.drawMap(mapData);
+        });
+        cropList.drawCropList();
+        guidedTours.drawGuidedTours();
+        barChart.drawBarChart();
+        lineChart.drawLineChart();
+        lineChart.drawYearBar();
+    });
+}
+
+main();
