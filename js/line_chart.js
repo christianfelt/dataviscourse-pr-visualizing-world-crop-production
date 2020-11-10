@@ -8,8 +8,6 @@ class LineChart {
             .attr("id", "line_chart_svg");
     }
     drawYearBar(){
-        // let yearScale = d3.scaleLinear().domain([1961, 2014]).range([50, 700]);
-
         let yearSlider = d3.select('#year_slider_wrapper')
             .append('input').classed('slider', true)
             .attr('type', 'range')
@@ -26,9 +24,6 @@ class LineChart {
         .text("2000")
         .attr("x", 5)
         .attr("y", 15);
-
-        // sliderText.attr('x', yearScale("2000"));
-        // sliderText.attr('y', 25);
 
         yearSlider.on('input', function () {
             // let thisYear = this.value;
