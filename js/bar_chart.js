@@ -1,6 +1,7 @@
 class BarChart {
-    constructor(data) {
+    constructor(data, cropVis) {
         this.data = data;
+        this.cropVis = cropVis;
     }
     drawBarChart() {
         let barChartWrapper = d3.select("#bar_chart_wrapper");

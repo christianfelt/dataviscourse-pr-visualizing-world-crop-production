@@ -1,6 +1,7 @@
 class Map {
-    constructor(data) {
+    constructor(data, cropVis) {
         this.projection = d3.geoWinkel3().scale(140).translate([365, 225]);
+        this.cropVis;
         // this.nameArray = data.population.map(d => d.geo.toUpperCase());
         // this.populationData = data.population;
         // this.infoBox = infoBox;

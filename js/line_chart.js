@@ -1,6 +1,7 @@
 class LineChart {
-    constructor(data) {
+    constructor(data, cropVis) {
         this.data = data;
+        this.cropVis = cropVis;
     }
     drawLineChart() {
         let lineChartWrapper = d3.select("#line_chart_wrapper");
