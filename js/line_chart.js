@@ -8,7 +8,7 @@ class LineChart {
         lineChartWrapper.append("svg")
             .attr("id", "line_chart_svg");
     }
-    drawYearBar(){
+    drawYearBar() {
         let yearSlider = d3.select('#year_slider_wrapper')
             .append('input').classed('slider', true)
             .attr('type', 'range')
@@ -21,10 +21,10 @@ class LineChart {
             .append('svg').attr("id", "slider_SVG");
 
         let sliderText = sliderLabelSVG.append('text')
-        .attr("id", "slider_label_text")
-        .text("2000")
-        .attr("x", 5)
-        .attr("y", 15);
+            .attr("id", "slider_label_text")
+            .text("2000")
+            .attr("x", 5)
+            .attr("y", 15);
 
         yearSlider.on('input', function () {
             // let thisYear = this.value;

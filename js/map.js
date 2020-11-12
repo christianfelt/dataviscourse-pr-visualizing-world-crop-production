@@ -50,5 +50,5 @@ class Map {
             .classed("graticule_outline", true)
             .attr("d", path);
     }
-    
+
 }

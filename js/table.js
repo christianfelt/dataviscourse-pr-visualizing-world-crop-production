@@ -1,5 +1,5 @@
-class Table{
-    constructor(data, cropVis){
+class Table {
+    constructor(data, cropVis) {
         this.data = data;
         this.cropVis = cropVis;
     }

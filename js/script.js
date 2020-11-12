@@ -28,7 +28,7 @@ async function loadData() {
     let asia = await loadFile('data/agriculture-crop-production/data/production_crops_e_asia.csv');
     let europe = await loadFile('data/agriculture-crop-production/data/production_crops_e_europe.csv');
     let oceania = await loadFile('data/agriculture-crop-production/data/production_crops_e_oceania.csv');
-    let cmu5 = await loadFile('data/cmu5.csv');
+    let cmu5 = await loadFile('data/cmu5.csv'); // Used only for mapping ISO geo codes to country names
     let iso_countryName_map = {};
     cmu5.map(row => iso_countryName_map[row.geo.toUpperCase()] = row.country);
     let continents = {
@@ -41,6 +41,7 @@ async function loadData() {
     let cropSet = new Set();
     let elementSet = new Set();
     let countries = new Set();
+    // Create sets of all the different crops, countries, and elements
     for (let continent in continents) {
         for (let row of continents[continent]) {
             let thisCrop = row.item;
@@ -51,6 +52,17 @@ async function loadData() {
             elementSet.add(thisElement);
         }
     }
+    let max_element_vals_for_each_crop = {}; // Used for setting choropleth color scales
+    for (let crop of cropSet) {
+        max_element_vals_for_each_crop[crop] = {};
+        for (let element of elementSet) {
+            max_element_vals_for_each_crop[crop][element] = {};
+            for (let year = 1961; year <= 2014; year++){
+                max_element_vals_for_each_crop[crop][element]["y" + String(year)] = 0;
+            }
+        }
+    }
+    // Set up the empty dictionaries we'll have to access and fill later
     let countriesDict = {};
     for (let country of countries) {
         countriesDict[country] = {};
@@ -61,13 +73,21 @@ async function loadData() {
             }
         }
     }
+    // Now fill them
     for (let continent in continents) {
         for (let row of continents[continent]) {
             let thisCountry = row.area;
             let thisCrop = row.item;
             let thisElement = row.element;
             for (let attribute in row) {
-                countriesDict[thisCountry][thisCrop][thisElement][attribute] = row[attribute];
+                let thisEntry = row[attribute];
+                countriesDict[thisCountry][thisCrop][thisElement][attribute] = thisEntry;
+                // The attributes representing amount of an element are of the form e.g. y1996 but not y1996f
+                if (attribute.charAt(0) == "y" && attribute.charAt(attribute.length - 1) != "f") {
+                    if (+thisEntry > +max_element_vals_for_each_crop[thisCrop][thisElement][attribute]) {
+                        max_element_vals_for_each_crop[thisCrop][thisElement][attribute] = +thisEntry;
+                    }
+                }
             }
         }
     }
@@ -82,7 +102,10 @@ async function loadData() {
 
     let orderedCrops = [...cropSet].sort();
     let orderedCountries = sortObjectByKey(countriesDict);
-    return { 'crops': orderedCrops, 'countries': orderedCountries, 'iso_countryName_map': iso_countryName_map };
+    return {
+        'crops': orderedCrops, 'countries': orderedCountries, 'iso_countryName_map': iso_countryName_map,
+        'max_element_vals_for_each_crop': max_element_vals_for_each_crop
+    };
 }
 
 async function main() {
