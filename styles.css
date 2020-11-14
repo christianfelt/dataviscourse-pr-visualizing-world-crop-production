@@ -140,10 +140,24 @@ table{
     flex-direction: column;
 }
 
+.bar{
+    fill: chocolate;
+}
+
+.barLabel{
+    font-size: 9pt;
+}
+
 .boundary {
-    fill: none;
+    fill: white;
     stroke: black;
     stroke-width: .3px;
+}
+
+.clickedCropLi{
+    color: rgb(10, 76, 199);
+    background-color: rgb(166, 192, 240);
+    font-weight: bold;
 }
 
 .graticule {

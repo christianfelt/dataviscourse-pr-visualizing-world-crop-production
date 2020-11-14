@@ -4,8 +4,9 @@ class CropList {
         this.cropVis = cropVis;
     }
     updateCropOnMap(that) {
-        let choroplethResolution = 7;
-        let cropElementMax = that.data.max_element_vals_for_each_crop[that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)];
+        let choroplethResolution = 9;
+        let cropElementMax =
+            that.data.max_element_vals_for_each_crop[that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)];
         let choroplethDomain = [];
         for (let i = 0; i < choroplethResolution; i++) {
             choroplethDomain.push(i * (cropElementMax / choroplethResolution));
@@ -34,6 +35,11 @@ class CropList {
             .on("click", function (d) {
                 that.cropVis.selected_crop = d;
                 that.updateCropOnMap(that);
+                // Unhighlight previously selected crop and highlight selected crop
+                d3.selectAll(".clickedCropLi").classed("clickedCropLi", false);
+                d3.select(this).attr("class", "clickedCropLi");
+                that.cropVis.selected_countries.clear();
+                d3.selectAll(".barGroup").remove();
             })
             .text(function (d) {
                 return d;

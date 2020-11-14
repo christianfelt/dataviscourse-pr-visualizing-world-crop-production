@@ -109,7 +109,7 @@ async function loadData() {
 }
 
 async function main() {
-    let cropVisualization = new CropVisualization(2000, new Set(), "Bananas"); //Default values
+    const cropVisualization = new CropVisualization(2000, new Set(), "Bananas"); //Default values
     data = loadData().then(data => {
         console.log(data);
         const worldMap = new Map(data, cropVisualization);
