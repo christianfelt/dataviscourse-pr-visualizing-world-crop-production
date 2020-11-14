@@ -2,6 +2,7 @@ class CropList {
     constructor(data, cropVis) {
         this.data = data;
         this.cropVis = cropVis;
+        this.cropVis.cropList = this;
     }
     updateCropOnMap(that) {
         let choroplethResolution = 9;
@@ -39,7 +40,7 @@ class CropList {
                 d3.selectAll(".clickedCropLi").classed("clickedCropLi", false);
                 d3.select(this).attr("class", "clickedCropLi");
                 that.cropVis.selected_countries.clear();
-                d3.selectAll(".barGroup").remove();
+                that.cropVis.barChart.deleteBarChart();
             })
             .text(function (d) {
                 return d;

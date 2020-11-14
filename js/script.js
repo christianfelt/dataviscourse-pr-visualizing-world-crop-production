@@ -3,6 +3,12 @@ class CropVisualization {
         this.active_year = active_year;
         this.selected_countries = selected_countries;
         this.selected_crop = selected_crop;
+        this.barChart = null;
+        this.lineChart = null;
+        this.worldMap = null;
+        this.guidedTours = null;
+        this.table = null;
+        this.cropList = null;
     }
 }
 
@@ -110,7 +116,7 @@ async function loadData() {
 
 async function main() {
     const cropVisualization = new CropVisualization(2000, new Set(), "Bananas"); //Default values
-    data = loadData().then(data => {
+    const data = loadData().then(data => {
         console.log(data);
         const worldMap = new Map(data, cropVisualization);
         const cropList = new CropList(data, cropVisualization);

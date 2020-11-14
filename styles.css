@@ -23,6 +23,10 @@ table{
     height: 100%;
 }
 
+#barUnitsKey{
+    font-size: 8pt;
+}
+
 #button_and_slider_wrapper{
     display: flex;
     flex-direction: row;
