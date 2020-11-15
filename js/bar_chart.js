@@ -33,8 +33,7 @@ class BarChart {
             that.data.max_element_vals_for_each_crop[that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)];
         let barScale = d3.scaleLinear().domain([0, cropElementMax]).range([0, that.maxBarHeight]);
         let axisScale = d3.scaleLinear().domain([0, cropElementMax]).range([that.maxBarHeight, 0]).nice();
-        d3.select("#barAxis").remove();
-        d3.select("#barUnitsKey").remove();
+        that.deleteBarChart();
         let unitCompressionFactor = (10 ** (String(Math.trunc(cropElementMax)).length - 1));
         let barAxis = d3.axisLeft()
             .scale(axisScale).tickFormat(function (d, i) {
@@ -84,8 +83,17 @@ class BarChart {
             })
             .attr("width", that.barWidth)
             .attr("height", function (d, i) {
-                return barScale(that.data.countries[d][that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)]);
+                try{
+                    return barScale(that.data.countries[d][that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)]);
+                }
+                catch{
+                    return 0;
+                }
             })
-            .classed("bar", true);
+            .classed("bar", true)
+            .style("fill", function(d, i){
+                return that.cropVis.worldMap.selectedCountryColorScheme(i + 1);
+            })
+            .style("opacity", 0.9);
     }
 }

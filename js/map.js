@@ -4,6 +4,12 @@ class Map {
         this.cropVis = cropVis;
         this.data = data;
         this.cropVis.worldMap = this;
+        this.selectedCountryColorScheme = d3.scaleOrdinal(d3.schemeTableau10);
+    }
+    clearHighlightedBoundaries() {
+        d3.selectAll(".boundary").style("stroke", "black");
+        d3.selectAll(".boundary").style("stroke-width", "0.3px");
+        d3.selectAll(".boundary").style("opacity", "1");
     }
     drawMap(world) {
         let geoJSON = topojson.feature(world, world.objects.countries);
@@ -24,6 +30,11 @@ class Map {
                 let countryName = that.data.iso_countryName_map[this_ISO];
                 that.cropVis.selected_countries.add(countryName);
                 that.cropVis.barChart.updateBarChart();
+                that.cropVis.lineChart.updateLineChart();
+                let thisSelectionColorIndex = that.cropVis.selected_countries.size;
+                d3.select(this).style("stroke", that.selectedCountryColorScheme(thisSelectionColorIndex));
+                d3.select(this).style("stroke-opacity", 0.6);
+                d3.select(this).style("stroke-width", 4);
             })
             .attr("d", path);
         let graticule = d3.geoGraticule();
@@ -40,7 +51,9 @@ class Map {
             .on("click", function () {
                 that.cropVis.selected_countries.clear();
                 d3.selectAll(".barGroup").remove();
-
+                // Unhighlight boundaries
+                that.clearHighlightedBoundaries();
+                that.cropVis.lineChart.deleteLineChart();
             });
     }
 

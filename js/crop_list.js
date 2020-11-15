@@ -41,6 +41,7 @@ class CropList {
                 d3.select(this).attr("class", "clickedCropLi");
                 that.cropVis.selected_countries.clear();
                 that.cropVis.barChart.deleteBarChart();
+                that.cropVis.worldMap.clearHighlightedBoundaries();
             })
             .text(function (d) {
                 return d;

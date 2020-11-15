@@ -90,6 +90,10 @@ table{
     height: 33%;
 }
 
+#lineUnitsKey{
+    font-size: 8pt;
+}
+
 #map_and_crop_and_tours_wrapper{
     display: flex;
     flex-direction: column;
@@ -159,9 +163,8 @@ table{
 }
 
 .clickedCropLi{
-    color: rgb(10, 76, 199);
-    background-color: rgb(166, 192, 240);
-    font-weight: bold;
+    color: rgb(245, 240, 226);
+    background-color: rgb(70, 104, 216);
 }
 
 .graticule {
@@ -178,6 +181,11 @@ table{
     stroke-opacity: 0.5;
     stroke-width: 2px; 
 } 
+
+.line{
+    stroke-width: 1.5px;
+    fill: none;
+}
 
 .slider_label{
     width: 80px;
