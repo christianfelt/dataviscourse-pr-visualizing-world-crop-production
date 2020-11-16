@@ -84,26 +84,33 @@ class LineChart {
             .attr("transform", "translate(" + that.margin.left + "," + that.margin.top + ")");
         let i = 1;
         for (let c in year_data) {
-            try {
-                lineChartSVG.append("path")
-                    .datum(year_data[c])
-                    .attr("d", d3.line()
-                        .x(function (d) {
-                            return that.yearScale(d[0]);
-                        })
-                        .y(function (d) {
-                            return valueScale(d[1]);
-                        })
-                    )
-                    .classed("line", true)
-                    .style("stroke", function () {
-                        return that.cropVis.worldMap.selectedCountryColorScheme(i);
-                    });
-                i++;
-            }
-            catch {
-                // Missing data at some point
-            }
+            lineChartSVG.append("path")
+                .datum(year_data[c])
+                .attr("d", d3.line()
+                    .x(function (d) {
+                        let x = that.yearScale(d[0]);
+                        if (Number.isNaN(x) || x == undefined) {
+                            return that.yearScale(1961);
+                        }
+                        else {
+                            return x;
+                        }
+                    })
+                    .y(function (d) {
+                        let y = valueScale(d[1]);
+                        if (Number.isNaN(y) || y == undefined) {
+                            return valueScale(0);
+                        }
+                        else {
+                            return y;
+                        }
+                    })
+                )
+                .classed("line", true)
+                .style("stroke", function () {
+                    return that.cropVis.worldMap.selectedCountryColorScheme(i);
+                });
+            i++;
         }
 
 

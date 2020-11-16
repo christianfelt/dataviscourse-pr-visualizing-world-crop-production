@@ -33,6 +33,9 @@ class CropList {
             .data([...this.data.crops]);
         boundCrops.enter()
             .append("li")
+            .attr("id", function(d){
+                return d;
+            })
             .on("click", function (d) {
                 that.cropVis.selected_crop = d;
                 that.updateCropOnMap(that);
@@ -42,6 +45,7 @@ class CropList {
                 that.cropVis.selected_countries.clear();
                 that.cropVis.barChart.deleteBarChart();
                 that.cropVis.worldMap.clearHighlightedBoundaries();
+                that.cropVis.lineChart.deleteLineChart();
             })
             .text(function (d) {
                 return d;

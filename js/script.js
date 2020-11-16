@@ -63,7 +63,7 @@ async function loadData() {
         max_element_vals_for_each_crop[crop] = {};
         for (let element of elementSet) {
             max_element_vals_for_each_crop[crop][element] = {};
-            for (let year = 1961; year <= 2014; year++){
+            for (let year = 1961; year <= 2014; year++) {
                 max_element_vals_for_each_crop[crop][element]["y" + String(year)] = 0;
             }
         }
@@ -125,12 +125,21 @@ async function main() {
         const lineChart = new LineChart(data, cropVisualization);
         d3.json('data/world.json').then(mapData => {
             worldMap.drawMap(mapData);
+            cropList.drawCropList();
+            guidedTours.drawGuidedTours();
+            barChart.drawBarChart();
+            lineChart.drawLineChart();
+            lineChart.drawYearBar();
+            cropList.updateCropOnMap(cropList);
+            d3.select("#" + cropVisualization.selected_crop).attr("class", "clickedCropLi");
+            cropVisualization.selected_countries.add("China");
+            barChart.updateBarChart();
+            cropVisualization.selected_countries.add("India");
+            barChart.updateBarChart();
+            cropVisualization.selected_countries.add("Brazil");
+            barChart.updateBarChart();
+            lineChart.updateLineChart();
         });
-        cropList.drawCropList();
-        guidedTours.drawGuidedTours();
-        barChart.drawBarChart();
-        lineChart.drawLineChart();
-        lineChart.drawYearBar();
     });
 }
 
