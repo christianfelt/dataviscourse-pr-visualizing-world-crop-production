@@ -10,4 +10,7 @@ class GuidedTours {
             .attr("id", "guided_tours_heading")
             .text("Guided Tours");
     }
+    selectPreset(crop, countries, year) {
+
+    }
 }

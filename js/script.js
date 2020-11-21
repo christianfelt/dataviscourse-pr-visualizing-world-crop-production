@@ -123,6 +123,7 @@ async function main() {
         const guidedTours = new GuidedTours(data, cropVisualization);
         const barChart = new BarChart(data, cropVisualization);
         const lineChart = new LineChart(data, cropVisualization);
+        const table = new Table(data, cropVisualization);
         d3.json('data/world.json').then(mapData => {
             worldMap.drawMap(mapData);
             cropList.drawCropList();
@@ -139,6 +140,7 @@ async function main() {
             cropVisualization.selected_countries.add("Brazil");
             barChart.updateBarChart();
             lineChart.updateLineChart();
+            table.drawTable();
         });
     });
 }

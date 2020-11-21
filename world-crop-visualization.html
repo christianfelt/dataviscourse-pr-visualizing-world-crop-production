@@ -48,22 +48,14 @@
             <div id="bar_chart_wrapper"></div>
             <div id="line_chart_wrapper"></div>
             <div id="table_wrapper">
-                <table>
-                    <tr>
-                        <th>Country Name</th>
-                        <th>Crop Weight</th>
-                        <th>Crop Value</th>
-                    </tr>
-                    <tr>
-                        <td>Australia</td>
-                        <td>500</td>
-                        <td>700</td>
-                    </tr>
-                    <tr>
-                        <td>Belgium</td>
-                        <td>10</td>
-                        <td>76</td>
-                    </tr>
+                <table id="table">
+                    <thead>
+                        <tr>
+                            <th id="nameHeader">Country Name</th>
+                            <th id="weightHeader">Crop Weight (dry tonnes)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
                 </table>
             </div>
         </div>
