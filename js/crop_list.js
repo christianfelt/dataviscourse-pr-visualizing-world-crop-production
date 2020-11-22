@@ -26,6 +26,7 @@ class CropList {
                 }
             });
     }
+
     drawCropList() {
         let that = this;
         let boundCrops = d3.select("#crop_list_ul")
@@ -33,7 +34,7 @@ class CropList {
             .data([...this.data.crops]);
         boundCrops.enter()
             .append("li")
-            .attr("id", function(d){
+            .attr("id", function (d) {
                 return d;
             })
             .on("click", function (d) {
@@ -46,6 +47,10 @@ class CropList {
                 that.cropVis.barChart.deleteBarChart();
                 that.cropVis.worldMap.clearHighlightedBoundaries();
                 that.cropVis.lineChart.deleteLineChart();
+                that.cropVis.table.latestWeights = [];
+                that.cropVis.table.nameSortDown = true;
+                that.cropVis.table.weightSortDown = false;
+                that.cropVis.table.drawTable();
             })
             .text(function (d) {
                 return d;

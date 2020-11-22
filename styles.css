@@ -2,6 +2,17 @@
     font-family: 'Roboto', sans-serif;
 }
 
+img{
+    margin-left: auto;
+    margin-right: auto;
+    /* margin-top: 2px;
+    margin-bottom: 2px; */
+    width: 110px;
+    height: 90px;
+    object-fit: cover;
+    padding: 20px;
+}
+
 table{
     width: 100%;
 }
@@ -71,6 +82,14 @@ table{
 #guided_tours_wrapper{
     width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#guided_tours_images_wrapper{
+    display: grid;
+    grid-template-columns: auto auto;
+    padding: 10px;
 }
 
 #info{
@@ -126,6 +145,8 @@ table{
 #table_wrapper{
     width: 100%;
     height: 33%;
+    overflow:hidden; 
+    overflow-y:scroll;
 }
 
 #title{

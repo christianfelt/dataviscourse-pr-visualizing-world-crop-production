@@ -12,17 +12,40 @@ class Table {
         d3.selectAll(".tableRow").remove();
     }
 
+    selectCountry(d, that) {
+        let countryName = d;
+        console.log(countryName);
+        that.cropVis.selected_countries.add(countryName);
+        that.cropVis.barChart.updateBarChart();
+        that.cropVis.lineChart.updateLineChart();
+        // let thisSelectionColorIndex = that.cropVis.selected_countries.size;
+        // d3.select(this).style("stroke", that.cropVis.worldMap.selectedCountryColorScheme(thisSelectionColorIndex));
+        // d3.select(this).style("stroke-opacity", 0.6);
+        // d3.select(this).style("stroke-width", 4);
+    }
+
+    selectCountryFromTuple(d, that){
+        let countryName = d[1];
+        console.log(countryName);
+        that.cropVis.selected_countries.add(countryName);
+        that.cropVis.barChart.updateBarChart();
+        that.cropVis.lineChart.updateLineChart();
+    }
+
     drawTable() {
         let that = this;
+        that.deleteTable();
         let countryRow = d3.select("#tableBody")
             .selectAll("tr")
             .data(Object.keys(that.data.countries))
             .enter()
             .append("tr")
             .classed("tableRow", true);
-        countryRow.append("td").text(function (d, i) {
-            return d;
-        });
+        countryRow.append("td")
+            .text(function (d, i) {
+                return d;
+            })
+            .on("click", d => that.selectCountry(d, that));
         countryRow.append("td").text(function (d, i) {
             let cropWeight = that.data.countries[d][that.cropVis.selected_crop]["Production"]["y" + that.cropVis.active_year];
             if (cropWeight == "" || cropWeight == undefined) {
@@ -72,9 +95,11 @@ class Table {
             .enter()
             .append("tr")
             .classed("tableRow", true);
-        countryRow.append("td").text(function (d, i) {
-            return d[1];
-        });
+        countryRow.append("td")
+            .text(function (d, i) {
+                return d[1];
+            })
+            .on("click", d => that.selectCountryFromTuple(d, that));
         countryRow.append("td").text(function (d, i) {
             return d[0]
         });
@@ -86,7 +111,7 @@ class Table {
             if (weight == "N/A" && that.weightSortDown) {
                 return Infinity;
             }
-            else if (weight == "N/A" && !that.weightSortDown){
+            else if (weight == "N/A" && !that.weightSortDown) {
                 return -Infinity; //Put N/As at the bottom in either case
             }
             else {
@@ -105,16 +130,17 @@ class Table {
             }
             return returnValue;
         });
-        console.log(sortedByWeight);
         let countryRow = d3.select("#tableBody")
             .selectAll("tr")
             .data(sortedByWeight)
             .enter()
             .append("tr")
             .classed("tableRow", true);
-        countryRow.append("td").text(function (d, i) {
-            return d[1];
-        });
+        countryRow.append("td")
+            .text(function (d, i) {
+                return d[1];
+            })
+            .on("click", d => that.selectCountryFromTuple(d, that));
         countryRow.append("td").text(function (d, i) {
             return d[0];
         });
