@@ -27,12 +27,6 @@ class GuidedTours {
         d3.select("#gooseberryImg").on("click", function () { that.gooseberriesTour(that) });
         d3.select("#peppermintImg").on("click", function () { that.peppermintTour(that) });
         d3.select("#oliveImg").on("click", function () { that.oliveTour(that) });
-
-
-
-
-
-
     }
 
     almondsTour(that) {

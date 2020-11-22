@@ -20,6 +20,7 @@ table{
     height: 1000px;
     display: flex;
     flex-direction: column;
+    margin-left: 40px;
 }
 
 #bar_chart_wrapper{
@@ -70,6 +71,10 @@ table{
     height: 100%;
 }
 
+#faostatCitation{
+    margin-left: 50px;
+}
+
 #guided_tours_heading{
     font-size: 150%;
     text-align: center;
@@ -92,7 +97,7 @@ table{
 
 #info{
     display: inline-block;
-    margin-left: 100px;
+    margin-left: 50px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -177,6 +182,7 @@ table{
 
 .barLabel{
     font-size: 9pt;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .boundary {
