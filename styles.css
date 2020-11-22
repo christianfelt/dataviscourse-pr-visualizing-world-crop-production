@@ -5,12 +5,10 @@
 img{
     margin-left: auto;
     margin-right: auto;
-    /* margin-top: 2px;
-    margin-bottom: 2px; */
-    width: 110px;
-    height: 90px;
+    width: 120px;
+    height: 95px;
     object-fit: cover;
-    padding: 20px;
+    padding: 5px;
 }
 
 table{
@@ -206,6 +204,15 @@ table{
 .line{
     stroke-width: 1.5px;
     fill: none;
+}
+
+.overlay{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 1050px;
+    width: 100%;
+    background: rgb(255, 255, 255, 0.5);
 }
 
 .slider_label{

@@ -123,7 +123,7 @@ class LineChart {
             .attr('type', 'range')
             .attr('min', 1961)
             .attr('max', 2014)
-            .attr('value', 2000);
+            .attr('value', that.cropVis.active_year);
 
         let sliderLabelSVG = d3.select('#year_slider_wrapper')
             .append('div').classed('slider_label', true)
@@ -131,7 +131,7 @@ class LineChart {
 
         let sliderText = sliderLabelSVG.append('text')
             .attr("id", "slider_label_text")
-            .text("2000")
+            .text(that.cropVis.active_year)
             .attr("x", 5)
             .attr("y", 15);
 

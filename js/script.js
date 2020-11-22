@@ -115,7 +115,7 @@ async function loadData() {
 }
 
 async function main() {
-    const cropVisualization = new CropVisualization(2000, new Set(), "Bananas"); //Default values
+    const cropVisualization = new CropVisualization(2014, new Set(), "Bananas"); //Default values
     const data = loadData().then(data => {
         console.log(data);
         const worldMap = new Map(data, cropVisualization);
@@ -138,6 +138,12 @@ async function main() {
             cropVisualization.selected_countries.add("India");
             barChart.updateBarChart();
             cropVisualization.selected_countries.add("Brazil");
+            barChart.updateBarChart();
+            cropVisualization.selected_countries.add("Ecuador");
+            barChart.updateBarChart();
+            cropVisualization.selected_countries.add("Philippines");
+            barChart.updateBarChart();
+            cropVisualization.selected_countries.add("Indonesia");
             barChart.updateBarChart();
             lineChart.updateLineChart();
             table.drawTable();

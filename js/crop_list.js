@@ -27,30 +27,41 @@ class CropList {
             });
     }
 
+    updateCropSelection(d, that, thisLi) {
+        that.cropVis.selected_crop = d;
+        that.updateCropOnMap(that);
+        // Unhighlight previously selected crop and highlight selected crop
+        d3.selectAll(".clickedCropLi").classed("clickedCropLi", false);
+        d3.select(thisLi).attr("class", "clickedCropLi");
+        let current_countries = [...that.cropVis.selected_countries];
+        that.cropVis.selected_countries.clear();
+        // that.cropVis.worldMap.clearHighlightedBoundaries();
+        that.cropVis.barChart.deleteBarChart();
+        that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.table.latestWeights = [];
+        that.cropVis.table.nameSortDown = true;
+        that.cropVis.table.weightSortDown = false;
+        that.cropVis.table.drawTable();
+        for (let country of current_countries) {
+            that.cropVis.selected_countries.add(country);
+            that.cropVis.barChart.updateBarChart();
+        }
+        that.cropVis.lineChart.updateLineChart();
+    }
+
     drawCropList() {
         let that = this;
         let boundCrops = d3.select("#crop_list_ul")
             .selectAll("li")
-            .data([...this.data.crops]);
+            .data([...that.data.crops]);
         boundCrops.enter()
             .append("li")
             .attr("id", function (d) {
-                return d;
+                return d.replace(/ /g, "_").replace(/,/g, "");
             })
             .on("click", function (d) {
-                that.cropVis.selected_crop = d;
-                that.updateCropOnMap(that);
-                // Unhighlight previously selected crop and highlight selected crop
-                d3.selectAll(".clickedCropLi").classed("clickedCropLi", false);
-                d3.select(this).attr("class", "clickedCropLi");
-                that.cropVis.selected_countries.clear();
-                that.cropVis.barChart.deleteBarChart();
-                that.cropVis.worldMap.clearHighlightedBoundaries();
-                that.cropVis.lineChart.deleteLineChart();
-                that.cropVis.table.latestWeights = [];
-                that.cropVis.table.nameSortDown = true;
-                that.cropVis.table.weightSortDown = false;
-                that.cropVis.table.drawTable();
+                let thisLi = this;
+                that.updateCropSelection(d, that, thisLi);
             })
             .text(function (d) {
                 return d;
