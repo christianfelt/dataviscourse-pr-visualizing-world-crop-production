@@ -135,6 +135,10 @@ table{
     height: 100%;
 }
 
+#pexelsCitation{
+    font-size: 8pt;
+}
+
 #slider_SVG{
     width: 80px;
     height: 25px;
@@ -211,6 +215,10 @@ table{
     height: 600px;
     width: 350px;
     background: rgb(255, 255, 255, 0.9);
+}
+
+.overlayTextCitation{
+    font-size: 8pt;
 }
 
 .slider_label{
