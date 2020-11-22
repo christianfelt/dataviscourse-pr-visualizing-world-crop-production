@@ -48,10 +48,10 @@ table{
 
 #crop_list_ul{
     display: grid;
-    height:500px;
-    width:100%;
-    overflow:hidden; 
-    overflow-y:scroll;
+    height: 500px;
+    width: 100%;
+    overflow: hidden; 
+    overflow-y: scroll;
     list-style-type: none;
     margin-block-start: unset;
     margin-block-end: unset;
@@ -208,11 +208,9 @@ table{
 
 .overlay{
     position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 1050px;
-    width: 100%;
-    background: rgb(255, 255, 255, 0.5);
+    height: 600px;
+    width: 350px;
+    background: rgb(255, 255, 255, 0.9);
 }
 
 .slider_label{
