@@ -58,6 +58,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "almondsOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Almonds");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.almondsString);
@@ -89,6 +92,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "cranberriesOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Cranberries");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.cranberriesString);
@@ -120,6 +126,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "datesOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Dates");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.datesString);
@@ -151,6 +160,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "vanillaOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Vanilla");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.vanillaString);
@@ -182,6 +194,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "apricotsOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Apricots");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.apricotString);
@@ -213,6 +228,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "gooseberriesOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Gooseberries");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.gooseberriesString);
@@ -244,6 +262,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "peppermintOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Peppermint");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.peppermintString);
@@ -275,6 +296,9 @@ class GuidedTours {
             .append("div")
             .attr("id", "oliveOverlay")
             .classed("overlay", true);
+        overlay.append("h1")
+            .classed("overlayHeading", true)
+            .text("Olives");
         overlay.append("p")
             .classed("overlayText", true)
             .text(that.oliveString);
