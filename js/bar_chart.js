@@ -25,7 +25,7 @@ class BarChart {
         let that = this;
         let cropElementMax =
             that.data.max_element_vals_for_each_crop[that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)];
-        let barScale = d3.scaleLinear().domain([0, cropElementMax]).range([0, that.maxBarHeight]);
+        let barScale = d3.scaleLinear().domain([0, cropElementMax]).range([0, that.maxBarHeight]).nice();
         let axisScale = d3.scaleLinear().domain([0, cropElementMax]).range([that.maxBarHeight, 0]).nice();
         that.deleteBarChart();
         let unitCompressionFactor = (10 ** (String(Math.trunc(cropElementMax)).length - 1));

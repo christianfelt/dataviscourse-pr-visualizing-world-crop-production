@@ -47,6 +47,7 @@ class CropList {
             that.cropVis.barChart.updateBarChart();
         }
         that.cropVis.lineChart.updateLineChart();
+        that.cropVis.worldMap.updateAllMapTooltips(that);
     }
 
     drawCropList() {

@@ -25,6 +25,22 @@ class Map {
         }
     }
 
+    updateAllMapTooltips(that) {
+        d3.selectAll(".boundary")
+            .selectAll(".mapTooltip")
+            .text(function (d) {
+                let countryName = that.data.iso_countryName_map[d.id];
+                let countryDict = that.data.countries[countryName];
+                if (countryDict != undefined) {
+                    let amount = Math.round(that.data.countries[countryName][that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)]);
+                    return Number.isNaN(amount) ? countryName + ": N/A tonnes" : countryName + ": " + amount + " tonnes";
+                }
+                else {
+                    return countryName + ": N/A tonnes";
+                }
+            });
+    }
+
     drawMap(world) {
         let geoJSON = topojson.feature(world, world.objects.countries);
         let mapChart = d3.select("#map_div");
