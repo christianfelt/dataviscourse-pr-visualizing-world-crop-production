@@ -8,6 +8,7 @@ class LineChart {
         this.height = 330 - this.margin.top - this.margin.bottom;
         this.yearScale = d3.scaleLinear().domain([1961, 2014]).range([this.margin.right, this.width - this.margin.left - this.margin.right]);
     }
+
     drawLineChart() {
         let that = this;
         let lineChartWrapper = d3.select("#line_chart_wrapper");
@@ -22,11 +23,13 @@ class LineChart {
             .attr("transform", "translate(0," + (that.height + that.margin.top) + ")")
             .call(yearAxis);
     }
+
     deleteLineChart() {
         d3.select("#line_chart_group").remove();
         d3.select("#lineUnitsKey").remove();
         d3.select("#lineChartYAxis").remove();
     }
+
     updateLineChart() {
         let that = this;
         that.deleteLineChart();
@@ -107,15 +110,39 @@ class LineChart {
                     })
                 )
                 .classed("line", true)
+                .attr("id", function () {
+                    return c + "_line";
+                })
                 .style("stroke", function () {
                     return that.cropVis.worldMap.selectedCountryColorScheme(i);
+                })
+                .on("mouseover", function () {
+                    d3.select(this).classed("mouseoverLine", true);
+                    d3.select("#" + c + "_rect").classed("mouseoverRect", true);
+                })
+                .on("mouseout", function () {
+                    d3.select(this).classed("mouseoverLine", false);
+                    d3.select("#" + c + "_rect").classed("mouseoverRect", false);
+                })
+                .append("title")
+                .text(function () {
+                    return c;
                 });
             i++;
+            for (let country of that.cropVis.selected_countries) {
+                d3.select("#" + country + "_rect")
+                    .on("mouseover", function () {
+                        d3.select(this).classed("mouseoverRect", true);
+                        d3.select("#" + country + "_line").classed("mouseoverLine", true);
+                    })
+                    .on("mouseout", function () {
+                        d3.select(this).classed("mouseoverRect", false);
+                        d3.select("#" + country + "_line").classed("mouseoverLine", false);
+                    });
+            }
         }
-
-
-
     }
+
     drawYearBar() {
         let that = this;
         let yearSlider = d3.select('#year_slider_wrapper')

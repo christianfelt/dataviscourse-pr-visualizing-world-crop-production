@@ -216,6 +216,15 @@ table{
     fill: none;
 }
 
+.mouseoverLine{
+    stroke-width: 6px;
+}
+
+.mouseoverRect{
+    stroke: darkgray;
+    stroke-width: 7;
+}
+
 .overlay{
     position: absolute;
     height: 600px;

@@ -60,6 +60,7 @@ class BarChart {
             .text(d => d);
         rectSelection
             .append("rect")
+            .attr("id", d => d + "_rect")
             .attr("x", 0)
             .attr("y", function (d, i) {
                 let height = 0;
@@ -77,17 +78,21 @@ class BarChart {
             })
             .attr("width", that.barWidth)
             .attr("height", function (d, i) {
-                try{
+                try {
                     return barScale(that.data.countries[d][that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)]);
                 }
-                catch{
+                catch {
                     return 0;
                 }
             })
             .classed("bar", true)
-            .style("fill", function(d, i){
+            .style("fill", function (d, i) {
                 return that.cropVis.worldMap.selectedCountryColorScheme(i + 1);
             })
-            .style("opacity", 0.9);
+            .style("opacity", 0.9)
+            .append("title")
+            .text(function (d) {
+                return Math.round(that.data.countries[d][that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)]) + " tonnes";
+            });
     }
 }

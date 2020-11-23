@@ -133,18 +133,10 @@ async function main() {
             lineChart.drawYearBar();
             cropList.updateCropOnMap(cropList);
             d3.select("#" + cropVisualization.selected_crop).attr("class", "clickedCropLi");
-            cropVisualization.selected_countries.add("China");
-            barChart.updateBarChart();
-            cropVisualization.selected_countries.add("India");
-            barChart.updateBarChart();
-            cropVisualization.selected_countries.add("Brazil");
-            barChart.updateBarChart();
-            cropVisualization.selected_countries.add("Ecuador");
-            barChart.updateBarChart();
-            cropVisualization.selected_countries.add("Philippines");
-            barChart.updateBarChart();
-            cropVisualization.selected_countries.add("Indonesia");
-            barChart.updateBarChart();
+            for (let country of ["China", "India", "Brazil", "Ecuador", "Philippines", "Indonesia"]) {
+                cropVisualization.selected_countries.add(country);
+                barChart.updateBarChart();
+            }
             lineChart.updateLineChart();
             table.drawTable();
         });
