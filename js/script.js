@@ -37,6 +37,9 @@ async function loadData() {
     let cmu5 = await loadFile('data/cmu5.csv'); // Used only for mapping ISO geo codes to country names
     let iso_countryName_map = {};
     cmu5.map(row => iso_countryName_map[row.geo.toUpperCase()] = row.country);
+    let countryName_iso_map = {};
+    cmu5.map(row => countryName_iso_map[row.country] = row.geo.toUpperCase());
+
     let continents = {
         'africa': africa,
         'americas': americas,
@@ -110,7 +113,7 @@ async function loadData() {
     let orderedCountries = sortObjectByKey(countriesDict);
     return {
         'crops': orderedCrops, 'countries': orderedCountries, 'iso_countryName_map': iso_countryName_map,
-        'max_element_vals_for_each_crop': max_element_vals_for_each_crop
+        'max_element_vals_for_each_crop': max_element_vals_for_each_crop, 'countryName_iso_map': countryName_iso_map
     };
 }
 
@@ -139,6 +142,7 @@ async function main() {
             }
             lineChart.updateLineChart();
             table.drawTable();
+            worldMap.highlightBoundariesOfAllSelectedCountries();
         });
     });
 }

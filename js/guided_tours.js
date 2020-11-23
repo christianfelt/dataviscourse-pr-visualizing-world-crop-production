@@ -19,14 +19,38 @@ class GuidedTours {
 
     drawGuidedTours() {
         let that = this;
-        d3.select("#almondsImg").on("click", function () { that.almondsTour(that) });
-        d3.select("#cranberriesImg").on("click", function () { that.cranberriesTour(that) });
-        d3.select("#datesImg").on("click", function () { that.datesTour(that) });
-        d3.select("#vanillaImg").on("click", function () { that.vanillaTour(that) });
-        d3.select("#apricotImg").on("click", function () { that.apricotsTour(that) });
-        d3.select("#gooseberryImg").on("click", function () { that.gooseberriesTour(that) });
-        d3.select("#peppermintImg").on("click", function () { that.peppermintTour(that) });
-        d3.select("#oliveImg").on("click", function () { that.oliveTour(that) });
+        d3.select("#almondsImg").on("click", function () {
+            that.almondsTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
+        d3.select("#cranberriesImg").on("click", function () {
+            that.cranberriesTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
+        d3.select("#datesImg").on("click", function () {
+            that.datesTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
+        d3.select("#vanillaImg").on("click", function () {
+            that.vanillaTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
+        d3.select("#apricotImg").on("click", function () {
+            that.apricotsTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
+        d3.select("#gooseberryImg").on("click", function () {
+            that.gooseberriesTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
+        d3.select("#peppermintImg").on("click", function () {
+            that.peppermintTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
+        d3.select("#oliveImg").on("click", function () {
+            that.oliveTour(that);
+            that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
+        });
     }
 
     almondsTour(that) {

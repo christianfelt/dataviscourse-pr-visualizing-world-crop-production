@@ -6,11 +6,25 @@ class Map {
         this.cropVis.worldMap = this;
         this.selectedCountryColorScheme = d3.scaleOrdinal(d3.schemeTableau10);
     }
+
     clearHighlightedBoundaries() {
         d3.selectAll(".boundary").style("stroke", "black");
         d3.selectAll(".boundary").style("stroke-width", "0.3px");
         d3.selectAll(".boundary").style("opacity", "1");
     }
+
+    highlightBoundariesOfAllSelectedCountries() {
+        let i = 1;
+        for (let country of this.cropVis.selected_countries) {
+            let countryIso = this.data.countryName_iso_map[country];
+            let thisCountry = d3.select("#" + countryIso);
+            thisCountry.style("stroke", this.selectedCountryColorScheme(i));
+            thisCountry.style("stroke-opacity", 0.6);
+            thisCountry.style("stroke-width", 4);
+            i++;
+        }
+    }
+
     drawMap(world) {
         let geoJSON = topojson.feature(world, world.objects.countries);
         let mapChart = d3.select("#map_div");
@@ -36,7 +50,20 @@ class Map {
                 d3.select(this).style("stroke-opacity", 0.6);
                 d3.select(this).style("stroke-width", 4);
             })
-            .attr("d", path);
+            .attr("d", path)
+            .append("title")
+            .classed("mapTooltip", true)
+            .text(function (d) {
+                let countryName = that.data.iso_countryName_map[d.id];
+                let countryDict = that.data.countries[countryName];
+                if (countryDict != undefined) {
+                    let amount = Math.round(that.data.countries[countryName][that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)]);
+                    return Number.isNaN(amount) ? countryName + ": N/A tonnes" : countryName + ": " + amount + " tonnes";
+                }
+                else {
+                    return countryName + ": N/A tonnes";
+                }
+            });
         let graticule = d3.geoGraticule();
         mapChartSVG.append('path')
             .datum(graticule)

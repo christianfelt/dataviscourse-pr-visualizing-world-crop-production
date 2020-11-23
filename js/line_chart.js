@@ -168,14 +168,19 @@ class LineChart {
             sliderText.text(thisYear);
             that.cropVis.barChart.updateBarChart();
             that.cropVis.cropList.updateCropOnMap(that);
-
-            // globalActiveYear = thisYear;
-            // let thisXIndicator = axisLabelMap[d3.select("#xAxisText").text()];
-            // let thisYIndicator = axisLabelMap[d3.select("#yAxisText").text()];
-            // sliderText.text(thisYear);
-            // d3.select(".activeYear-background").text(thisYear);
-            // that.infoBox.updateTextDescription(globalActiveCountry, thisYear);
-            // that.updatePlot(thisYear, thisXIndicator, thisYIndicator, globalCurrentCircleSizeIndicator);
+            d3.selectAll(".boundary")
+                .selectAll(".mapTooltip")
+                .text(function (d) {
+                    let countryName = that.data.iso_countryName_map[d.id];
+                    let countryDict = that.data.countries[countryName];
+                    if (countryDict != undefined) {
+                        let amount = Math.round(that.data.countries[countryName][that.cropVis.selected_crop]["Production"]["y" + String(that.cropVis.active_year)]);
+                        return Number.isNaN(amount) ? countryName + ": N/A tonnes" : countryName + ": " + amount + " tonnes";
+                    }
+                    else {
+                        return countryName + ": N/A tonnes";
+                    }
+                });
         });
     }
 }
