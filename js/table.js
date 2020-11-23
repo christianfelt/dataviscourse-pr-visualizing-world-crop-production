@@ -14,14 +14,9 @@ class Table {
 
     selectCountry(d, that) {
         let countryName = d;
-        console.log(countryName);
         that.cropVis.selected_countries.add(countryName);
         that.cropVis.barChart.updateBarChart();
         that.cropVis.lineChart.updateLineChart();
-        // let thisSelectionColorIndex = that.cropVis.selected_countries.size;
-        // d3.select(this).style("stroke", that.cropVis.worldMap.selectedCountryColorScheme(thisSelectionColorIndex));
-        // d3.select(this).style("stroke-opacity", 0.6);
-        // d3.select(this).style("stroke-width", 4);
     }
 
     selectCountryFromTuple(d, that) {
@@ -29,6 +24,7 @@ class Table {
         that.cropVis.selected_countries.add(countryName);
         that.cropVis.barChart.updateBarChart();
         that.cropVis.lineChart.updateLineChart();
+        that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
     }
 
     drawTable() {
