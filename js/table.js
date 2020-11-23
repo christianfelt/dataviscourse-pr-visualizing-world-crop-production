@@ -24,9 +24,8 @@ class Table {
         // d3.select(this).style("stroke-width", 4);
     }
 
-    selectCountryFromTuple(d, that){
+    selectCountryFromTuple(d, that) {
         let countryName = d[1];
-        console.log(countryName);
         that.cropVis.selected_countries.add(countryName);
         that.cropVis.barChart.updateBarChart();
         that.cropVis.lineChart.updateLineChart();
@@ -65,6 +64,8 @@ class Table {
             that.weightSortDown = !that.weightSortDown;
             that.redrawWeights(that);
         });
+        // Always start with table sorted by descending weight
+        that.redrawWeights(that);
     }
 
     redrawNames(that) {

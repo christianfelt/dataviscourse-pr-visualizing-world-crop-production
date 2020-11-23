@@ -111,18 +111,20 @@ class LineChart {
                 )
                 .classed("line", true)
                 .attr("id", function () {
-                    return c + "_line";
+                    return c.replace(/ /g, "_") + "_line";
                 })
                 .style("stroke", function () {
                     return that.cropVis.worldMap.selectedCountryColorScheme(i);
                 })
                 .on("mouseover", function () {
+                    let country = c.replace(/ /g, "_");
                     d3.select(this).classed("mouseoverLine", true);
-                    d3.select("#" + c + "_rect").classed("mouseoverRect", true);
+                    d3.select("#" + country + "_rect").classed("mouseoverRect", true);
                 })
                 .on("mouseout", function () {
+                    let country = c.replace(/ /g, "_");
                     d3.select(this).classed("mouseoverLine", false);
-                    d3.select("#" + c + "_rect").classed("mouseoverRect", false);
+                    d3.select("#" + country + "_rect").classed("mouseoverRect", false);
                 })
                 .append("title")
                 .text(function () {
@@ -130,6 +132,7 @@ class LineChart {
                 });
             i++;
             for (let country of that.cropVis.selected_countries) {
+                country = country.replace(/ /g, "_");
                 d3.select("#" + country + "_rect")
                     .on("mouseover", function () {
                         d3.select(this).classed("mouseoverRect", true);

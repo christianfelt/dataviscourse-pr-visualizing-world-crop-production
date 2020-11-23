@@ -60,7 +60,7 @@ class BarChart {
             .text(d => d);
         rectSelection
             .append("rect")
-            .attr("id", d => d + "_rect")
+            .attr("id", d => d.replace(/ /g, "_") + "_rect")
             .attr("x", 0)
             .attr("y", function (d, i) {
                 let height = 0;
