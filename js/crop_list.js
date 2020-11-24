@@ -14,7 +14,7 @@ class CropList {
         }
         let colorScale = d3.scaleThreshold()
             .domain(choroplethDomain)
-            .range(d3.schemeBlues[choroplethResolution]);
+            .range(d3.schemeGreens[choroplethResolution]);
 
         d3.selectAll(".boundary")
             .style("fill", function (d) {

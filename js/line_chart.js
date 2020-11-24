@@ -89,7 +89,7 @@ class LineChart {
 
         const lineTransition = d3.transition()
             .ease(d3.easeLinear)
-            .duration(4000);
+            .duration(3000);
 
         let i = 1;
         for (let c in year_data) {

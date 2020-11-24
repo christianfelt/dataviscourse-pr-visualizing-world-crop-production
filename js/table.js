@@ -43,7 +43,8 @@ class Table {
             .text(function (d, i) {
                 return d;
             })
-            .on("click", d => that.selectCountry(d, that));
+            .on("click", d => that.selectCountry(d, that))
+            .classed("countryNameTd", true);
         countryRow.append("td").text(function (d, i) {
             let cropWeight = that.data.countries[d][that.cropVis.selected_crop]["Production"]["y" + that.cropVis.active_year];
             if (cropWeight == "" || cropWeight == undefined) {
@@ -99,7 +100,8 @@ class Table {
             .text(function (d, i) {
                 return d[1];
             })
-            .on("click", d => that.selectCountryFromTuple(d, that));
+            .on("click", d => that.selectCountryFromTuple(d, that))
+            .classed("countryNameTd", true);
         countryRow.append("td").text(function (d, i) {
             return d[0]
         });
@@ -140,7 +142,8 @@ class Table {
             .text(function (d, i) {
                 return d[1];
             })
-            .on("click", d => that.selectCountryFromTuple(d, that));
+            .on("click", d => that.selectCountryFromTuple(d, that))
+            .classed("countryNameTd", true);
         countryRow.append("td").text(function (d, i) {
             return d[0];
         });

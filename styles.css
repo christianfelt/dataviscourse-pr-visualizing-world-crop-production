@@ -2,6 +2,15 @@
     font-family: 'Roboto', sans-serif;
 }
 
+body{
+    border-style: solid;
+    border-width: 1px;
+    padding: 4px;
+    border-radius: 4px;
+    padding-bottom: 8px;
+    width: 1460px;
+}
+
 img{
     margin-left: auto;
     margin-right: auto;
@@ -12,7 +21,23 @@ img{
 }
 
 table{
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
     width: 100%;
+}
+  
+td, th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 4px;
+}
+
+th{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-width: 2px;
+    border-left: none;
+    border-right: none;
+    border-color: rgb(172, 172, 172);
 }
 
 #bar_line_chart_and_table_wrapper{
@@ -20,7 +45,7 @@ table{
     height: 1000px;
     display: flex;
     flex-direction: column;
-    margin-left: 40px;
+    margin-left: 20px;
 }
 
 #bar_chart_wrapper{
@@ -42,9 +67,14 @@ table{
     flex-direction: row;
 }
 
+#clear_selection_button{
+    font-family: monospace;
+}
+
 #clear_selection_button_wrapper{
-    width: 20%;
+    width: 18%;
     height: 50px;
+    margin-right: 10px;
 }
 
 #crop_list_ul{
@@ -64,6 +94,12 @@ table{
 #crop_list_and_guided_tours_wrapper{
     display: flex;
     flex-direction: row;
+    border-style: solid;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    border-width: 1px;
+    padding-top: 5px;
 }
 
 #crop_list_wrapper{
@@ -72,14 +108,16 @@ table{
 }
 
 #faostatCitation{
-    margin-left: 50px;
+    margin-left: 110px;
+    font-variant: small-caps;
 }
 
 #guided_tours_heading{
     font-size: 150%;
     text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-bottom: 2px;
+    font-family: Baskerville;
 }
 
 #guided_tours_wrapper{
@@ -97,9 +135,10 @@ table{
 
 #info{
     display: inline-block;
-    margin-left: 50px;
+    margin-left: 170px;
     margin-top: 0px;
     margin-bottom: 0px;
+    font-style: italic;
 }
 
 #line_chart_svg{
@@ -121,6 +160,12 @@ table{
     flex-direction: column;
     width: 730px;
     height: 1000px;
+    border-style: solid;
+    border-right-width: 1px;
+    border-left: none;
+    border-bottom: none;
+    border-top: none;
+    padding-right: 10px;
 }
 
 #map_wrapper{
@@ -152,14 +197,16 @@ table{
 #table_wrapper{
     width: 100%;
     height: 33%;
-    overflow:hidden; 
-    overflow-y:scroll;
+    padding-top: 15px;
+    overflow: hidden; 
+    overflow-y: scroll;
 }
 
 #title{
     display: inline-block;
     margin-top: 0px;
     margin-bottom: 0px;
+    margin-left: 10px;
 }
 
 #wrapper{
@@ -176,10 +223,6 @@ table{
     flex-direction: column;
 }
 
-.bar{
-    fill: chocolate;
-}
-
 .barLabel{
     font-size: 9pt;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -192,8 +235,16 @@ table{
 }
 
 .clickedCropLi{
-    color: rgb(245, 240, 226);
-    background-color: rgb(70, 104, 216);
+    color: rgb(255, 249, 213);
+    background-color: rgb(91, 143, 6);
+    padding: 5px;
+    font-size: 13pt;
+    border-radius: 5px;
+}
+
+.countryNameTd{
+    border-right-width: 2px;
+    border-right-color: rgb(172, 172, 172);
 }
 
 .graticule {
@@ -210,6 +261,17 @@ table{
     stroke-opacity: 0.5;
     stroke-width: 2px; 
 } 
+
+.header{
+    margin-bottom: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 4px;
+    padding-top: 0px;
+}
 
 .line{
     stroke-width: 1.5px;
