@@ -7,6 +7,7 @@ class LineChart {
         this.width = 700 - this.margin.left - this.margin.right;
         this.height = 330 - this.margin.top - this.margin.bottom;
         this.yearScale = d3.scaleLinear().domain([1961, 2014]).range([this.margin.right, this.width - this.margin.left - this.margin.right]);
+        this.alreadyExistingCountries = new Set();
     }
 
     drawLineChart() {
@@ -30,7 +31,7 @@ class LineChart {
         d3.select("#lineChartYAxis").remove();
     }
 
-    updateLineChart() {
+    updateLineChart(mapClick) {
         let that = this;
         that.deleteLineChart();
         // Find the max production for the selected crop over all years
@@ -85,10 +86,15 @@ class LineChart {
             .append("g")
             .attr("id", "line_chart_group")
             .attr("transform", "translate(" + that.margin.left + "," + that.margin.top + ")");
+
+        const lineTransition = d3.transition()
+            .ease(d3.easeLinear)
+            .duration(4000);
+
         let i = 1;
         for (let c in year_data) {
-            lineChartSVG.append("path")
-                .datum(year_data[c])
+            let path = lineChartSVG.append("path");
+            path.datum(year_data[c])
                 .attr("d", d3.line()
                     .x(function (d) {
                         let x = that.yearScale(d[0]);
@@ -130,6 +136,23 @@ class LineChart {
                 .text(function () {
                     return c;
                 });
+            if (mapClick) {
+                // Only animate the latest line and only if it's a new country
+                if (i == that.cropVis.selected_countries.size && !that.alreadyExistingCountries.has(c)) {
+                    path.attr("stroke-dashoffset", 2500)
+                        .attr("stroke-dasharray", 2500)
+                        .transition(lineTransition)
+                        .attr("stroke-dashoffset", 0);
+                }
+            }
+            else {
+                // Animate all lines
+                path.attr("stroke-dashoffset", 2500)
+                    .attr("stroke-dasharray", 2500)
+                    .transition(lineTransition)
+                    .attr("stroke-dashoffset", 0);
+            }
+            that.alreadyExistingCountries.add(c);
             i++;
             for (let country of that.cropVis.selected_countries) {
                 country = country.replace(/ /g, "_");

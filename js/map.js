@@ -60,7 +60,7 @@ class Map {
                 let countryName = that.data.iso_countryName_map[this_ISO];
                 that.cropVis.selected_countries.add(countryName);
                 that.cropVis.barChart.updateBarChart();
-                that.cropVis.lineChart.updateLineChart();
+                that.cropVis.lineChart.updateLineChart(true);
                 let thisSelectionColorIndex = that.cropVis.selected_countries.size;
                 d3.select(this).style("stroke", that.selectedCountryColorScheme(thisSelectionColorIndex));
                 d3.select(this).style("stroke-opacity", 0.6);
@@ -97,6 +97,7 @@ class Map {
                 // Unhighlight boundaries
                 that.clearHighlightedBoundaries();
                 that.cropVis.lineChart.deleteLineChart();
+                that.cropVis.lineChart.alreadyExistingCountries.clear();
             });
     }
 

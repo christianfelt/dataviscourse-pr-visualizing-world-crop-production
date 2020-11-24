@@ -79,6 +79,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["USA", "Spain", "Australia", "Iran", "Morocco"]) {
             that.cropVis.selected_countries.add(country);
@@ -113,6 +114,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["USA", "Canada", "Chile", "Belarus"]) {
             that.cropVis.selected_countries.add(country);
@@ -147,6 +149,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["Egypt", "Iran", "Algeria", "Saudi Arabia", "Iraq", "Pakistan"]) {
             that.cropVis.selected_countries.add(country);
@@ -181,6 +184,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["Madagascar", "Indonesia", "Papua New Guinea"]) {
             that.cropVis.selected_countries.add(country);
@@ -215,6 +219,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["Uzbekistan", "Turkey", "Iran", "Italy", "Algeria"]) {
             that.cropVis.selected_countries.add(country);
@@ -249,6 +254,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["Germany", "Russia", "Poland", "Ukraine"]) {
             that.cropVis.selected_countries.add(country);
@@ -283,6 +289,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["Morocco", "Argentina"]) {
             that.cropVis.selected_countries.add(country);
@@ -317,6 +324,7 @@ class GuidedTours {
         that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.selected_countries.clear();
         for (let country of ["Spain", "Italy", "Greece", "Turkey", "Morocco"]) {
             that.cropVis.selected_countries.add(country);

@@ -23,7 +23,7 @@ class Table {
         let countryName = d[1];
         that.cropVis.selected_countries.add(countryName);
         that.cropVis.barChart.updateBarChart();
-        that.cropVis.lineChart.updateLineChart();
+        that.cropVis.lineChart.updateLineChart(true);
         that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
     }
 

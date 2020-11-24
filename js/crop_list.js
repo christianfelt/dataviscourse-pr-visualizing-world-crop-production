@@ -38,6 +38,7 @@ class CropList {
         // that.cropVis.worldMap.clearHighlightedBoundaries();
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
+        that.cropVis.lineChart.alreadyExistingCountries.clear();
         that.cropVis.table.latestWeights = [];
         that.cropVis.table.nameSortDown = true;
         that.cropVis.table.weightSortDown = false;
