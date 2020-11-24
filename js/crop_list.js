@@ -39,9 +39,6 @@ class CropList {
         that.cropVis.barChart.deleteBarChart();
         that.cropVis.lineChart.deleteLineChart();
         that.cropVis.lineChart.alreadyExistingCountries.clear();
-        that.cropVis.table.latestWeights = [];
-        that.cropVis.table.nameSortDown = true;
-        that.cropVis.table.weightSortDown = false;
         that.cropVis.table.drawTable();
         for (let country of current_countries) {
             that.cropVis.selected_countries.add(country);

@@ -227,9 +227,9 @@ table{
 
 .overlay{
     position: absolute;
-    height: 600px;
+    height: 450px;
     width: 350px;
-    background-image: linear-gradient(to bottom, rgba(255,255,255,1) 40%, rgba(255,255,255,0.3));
+    background-image: linear-gradient(to bottom, rgba(255,255,255,1) 45%, rgba(255,255,255,0.0));
     padding: 25px;
 }
 

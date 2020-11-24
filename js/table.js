@@ -29,7 +29,10 @@ class Table {
 
     drawTable() {
         let that = this;
+        that.latestWeights = [];
         that.deleteTable();
+        that.nameSortDown = true;
+        that.weightSortDown = false;
         let countryRow = d3.select("#tableBody")
             .selectAll("tr")
             .data(Object.keys(that.data.countries))
