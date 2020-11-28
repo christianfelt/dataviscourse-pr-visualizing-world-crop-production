@@ -1,4 +1,6 @@
+/* Represents the guided tours panel. */
 class GuidedTours {
+    /* Stores the data for the guided tours. */
     constructor(data, cropVis) {
         this.data = data;
         this.cropVis = cropVis;
@@ -13,10 +15,12 @@ class GuidedTours {
         this.oliveString = "Olives and olive oil have been an important part of Mediterranean cuisine and culture for at least 7,000 years. In 3000 BC, olives were cultivated commercially in Crete, likely providing much of the Minoan civilization's wealth. Raw olives are very bitter and must be cured and fermented prior to eating. Olive tree pollen is extremely allergenic.";
     }
 
+    /* Deletes the overlay that shows up when you click on a tour. */
     deleteOverlay() {
         d3.selectAll(".overlay").remove();
     }
 
+    /* Sets up the guided tours on click functions. */
     drawGuidedTours() {
         let that = this;
         d3.select("#almondsImg").on("click", function () {
@@ -53,6 +57,7 @@ class GuidedTours {
         });
     }
 
+    /* Displays the almond tour. */
     almondsTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -88,6 +93,7 @@ class GuidedTours {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Displays the cranberries tour. */
     cranberriesTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -123,6 +129,7 @@ class GuidedTours {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Displays the dates tour. */
     datesTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -158,6 +165,7 @@ class GuidedTours {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Displays the vanilla tour. */
     vanillaTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -193,6 +201,7 @@ class GuidedTours {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Displays the apricots tour. */
     apricotsTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -228,6 +237,7 @@ class GuidedTours {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Displays the gooseberries tour. */
     gooseberriesTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -263,6 +273,7 @@ class GuidedTours {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Displays the peppermint tour. */
     peppermintTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -298,6 +309,7 @@ class GuidedTours {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Displays the olives tour. */
     oliveTour(that) {
         let overlay = d3.select("#guided_tours_wrapper")
             .append("div")
@@ -331,9 +343,5 @@ class GuidedTours {
             that.cropVis.barChart.updateBarChart();
         }
         that.cropVis.lineChart.updateLineChart();
-    }
-
-    selectPreset(crop, countries, year) {
-
     }
 }

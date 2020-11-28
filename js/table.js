@@ -1,4 +1,6 @@
+/* Represents the table view. */
 class Table {
+    /* Stores the data for the table. */
     constructor(data, cropVis) {
         this.data = data;
         this.cropVis = cropVis;
@@ -8,10 +10,12 @@ class Table {
         this.latestWeights = [];
     }
 
+    /* Deletes all the rows in the table. */
     deleteTable() {
         d3.selectAll(".tableRow").remove();
     }
 
+    /* Selects the country you clicked on in the table in all the other views. */
     selectCountry(d, that) {
         let countryName = d;
         that.cropVis.selected_countries.add(countryName);
@@ -19,6 +23,7 @@ class Table {
         that.cropVis.lineChart.updateLineChart();
     }
 
+    /* Selects the country you clicked on in the table in all the other views. */
     selectCountryFromTuple(d, that) {
         let countryName = d[1];
         that.cropVis.selected_countries.add(countryName);
@@ -27,6 +32,7 @@ class Table {
         that.cropVis.worldMap.highlightBoundariesOfAllSelectedCountries();
     }
 
+    /* Draws the initial table. */
     drawTable() {
         let that = this;
         that.latestWeights = [];
@@ -68,6 +74,7 @@ class Table {
         that.redrawWeights(that);
     }
 
+    /* Redraws the table when it has been sorted by name. */
     redrawNames(that) {
         that.deleteTable();
         let sortedByNames = that.latestWeights.sort(function (a, b) {
@@ -107,8 +114,11 @@ class Table {
         });
     }
 
+    /* Redraws the table when it has been sorted by weight. */
     redrawWeights(that) {
 
+        /* Maps all possible weight values (not just numbers) to appropriate 
+        values that can be numerically sorted. */
         function weightMap(weight) {
             if (weight == "N/A" && that.weightSortDown) {
                 return Infinity;

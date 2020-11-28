@@ -1,4 +1,6 @@
+/* Represents the entire crop visualization. */
 class CropVisualization {
+    /* Stores information that is shared by all the classes in this project. */
     constructor(active_year, selected_countries, selected_crop) {
         this.active_year = active_year;
         this.selected_countries = selected_countries;
@@ -12,6 +14,7 @@ class CropVisualization {
     }
 }
 
+/* Reads in data from a CSV file. */
 async function loadFile(file) {
     let data = await d3.csv(file).then(d => {
         let mapped = d.map(g => {
@@ -28,6 +31,7 @@ async function loadFile(file) {
     return data;
 }
 
+/* Loads and processes all the data for this project into the appropriate structures. */
 async function loadData() {
     let africa = await loadFile('data/agriculture-crop-production/data/production_crops_e_africa.csv');
     let americas = await loadFile('data/agriculture-crop-production/data/production_crops_e_americas.csv');
@@ -101,6 +105,7 @@ async function loadData() {
         }
     }
 
+    /* Sorts an object by its keys */
     function sortObjectByKey(unorderedObject) {
         let orderedObject = {};
         Object.keys(unorderedObject).sort().forEach(function (key) {
@@ -117,6 +122,7 @@ async function loadData() {
     };
 }
 
+/* Serves as the entry point for this program and sets up all the views and the initially selected data. */
 async function main() {
     const cropVisualization = new CropVisualization(2014, new Set(), "Bananas"); //Default values
     const data = loadData().then(data => {
@@ -147,4 +153,5 @@ async function main() {
     });
 }
 
+/* Run the visualization. */
 main();

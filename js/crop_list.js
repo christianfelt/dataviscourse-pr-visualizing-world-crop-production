@@ -1,9 +1,13 @@
+/* Represents the list of crops */
 class CropList {
+    /* Constructs the list object.*/
     constructor(data, cropVis) {
         this.data = data;
         this.cropVis = cropVis;
         this.cropVis.cropList = this;
     }
+
+    /* Updates the choropleth with data for the selected crop.*/
     updateCropOnMap(that) {
         let choroplethResolution = 9;
         let cropElementMax =
@@ -27,6 +31,7 @@ class CropList {
             });
     }
 
+    /* Updates the crop list and other views that change when this happens. */
     updateCropSelection(d, that, thisLi) {
         that.cropVis.selected_crop = d;
         that.updateCropOnMap(that);
@@ -48,6 +53,7 @@ class CropList {
         that.cropVis.worldMap.updateAllMapTooltips(that);
     }
 
+    /* Draws the initial crop list. */
     drawCropList() {
         let that = this;
         let boundCrops = d3.select("#crop_list_ul")

@@ -1,4 +1,6 @@
+/* Represents the line chart. */
 class LineChart {
+    /* Stores data for the line chart.*/
     constructor(data, cropVis) {
         this.data = data;
         this.cropVis = cropVis;
@@ -10,6 +12,7 @@ class LineChart {
         this.alreadyExistingCountries = new Set();
     }
 
+    /* Draws the initial blank line chart. */
     drawLineChart() {
         let that = this;
         let lineChartWrapper = d3.select("#line_chart_wrapper");
@@ -25,12 +28,14 @@ class LineChart {
             .call(yearAxis);
     }
 
+    /* Deletes the line chart. */
     deleteLineChart() {
         d3.select("#line_chart_group").remove();
         d3.select("#lineUnitsKey").remove();
         d3.select("#lineChartYAxis").remove();
     }
 
+    /* Updates the line chart when crop or selected countries change. */
     updateLineChart(mapClick) {
         let that = this;
         that.deleteLineChart();
@@ -169,6 +174,7 @@ class LineChart {
         }
     }
 
+    /* Draws the year slider. */
     drawYearBar() {
         let that = this;
         let yearSlider = d3.select('#year_slider_wrapper')

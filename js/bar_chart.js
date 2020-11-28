@@ -1,4 +1,6 @@
+/* Represents the bar chart.*/
 class BarChart {
+    /* Constructs the bar chart*/
     constructor(data, cropVis) {
         this.data = data;
         this.cropVis = cropVis;
@@ -9,18 +11,21 @@ class BarChart {
         this.barSpacing = 25;
     }
 
+    /*Draws an empty bar chart.*/
     drawBarChart() {
         let barChartWrapper = d3.select("#bar_chart_wrapper");
         barChartWrapper.append("svg")
             .attr("id", "bar_chart_svg");
     }
 
+    /*Deletes the bar chart.*/
     deleteBarChart() {
         d3.select("#barAxis").remove();
         d3.select("#barUnitsKey").remove();
         d3.selectAll(".barGroup").remove();
     }
 
+    /*Redraws the bar chart for new data.*/
     updateBarChart() {
         let that = this;
         // Option 1: rescale y axis according to max for each year
@@ -37,9 +42,10 @@ class BarChart {
                 cropElementMax = thisValue;
             }
         }
-        let barScale = d3.scaleLinear().domain([0, cropElementMax]).range([0, that.maxBarHeight]).nice();  
+        let barScale = d3.scaleLinear().domain([0, cropElementMax]).range([0, that.maxBarHeight]).nice();
         let axisScale = d3.scaleLinear().domain([0, cropElementMax]).range([that.maxBarHeight, 0]).nice();
         that.deleteBarChart();
+        // For displaying units in scientific notation
         let unitCompressionFactor = (10 ** (String(Math.trunc(cropElementMax)).length - 1));
         let barAxis = d3.axisLeft()
             .scale(axisScale).tickFormat(function (d, i) {

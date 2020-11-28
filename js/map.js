@@ -1,4 +1,6 @@
+/* Represents the world map choropleth. */
 class Map {
+    /* Holds data for the map. */
     constructor(data, cropVis) {
         this.projection = d3.geoWinkel3().scale(140).translate([365, 225]);
         this.cropVis = cropVis;
@@ -7,12 +9,14 @@ class Map {
         this.selectedCountryColorScheme = d3.scaleOrdinal(d3.schemeTableau10);
     }
 
+    /* Clears all the highlighted country boundaries. */
     clearHighlightedBoundaries() {
         d3.selectAll(".boundary").style("stroke", "black");
         d3.selectAll(".boundary").style("stroke-width", "0.3px");
         d3.selectAll(".boundary").style("opacity", "1");
     }
 
+    /* Highlights all the boundaries of all the currently selected countries. */
     highlightBoundariesOfAllSelectedCountries() {
         let i = 1;
         for (let country of this.cropVis.selected_countries) {
@@ -25,6 +29,7 @@ class Map {
         }
     }
 
+    /* Updates the tooltips that appear when you mouse over a country. */
     updateAllMapTooltips(that) {
         d3.selectAll(".boundary")
             .selectAll(".mapTooltip")
@@ -41,6 +46,7 @@ class Map {
             });
     }
 
+    /* Draws the initial uncolored choropleth world map. */
     drawMap(world) {
         let geoJSON = topojson.feature(world, world.objects.countries);
         let mapChart = d3.select("#map_div");
@@ -100,6 +106,4 @@ class Map {
                 that.cropVis.lineChart.alreadyExistingCountries.clear();
             });
     }
-
-
 }
